@@ -1,0 +1,128 @@
+/* cOc-form CSS HEX */
+:root {
+  --prime1-moss_green: #859b6f;
+  --prime2-terra_pink: #ffb3b3;
+  --prime3-shadow_blue: #7480a4;
+  --bright1-blazing_yellow: #fee715;
+  --bright2-bright_Red: #e10600;
+  --bright3-vivid_blue: #2657ff;
+  --dark1-blue_black_blue: #101820;
+  --dark2-dark_jungle_green: #151f21;
+  --sec1-forest_green: #002f06;
+  --sec2-earth_red: #660000;
+  --sec3-terracota_mud: #ac3931;
+  --neut1-cultured: #f6f8f7;
+  --neut2-white: #ffffff;
+  --neut3-rocket_metallic: #7d777b;
+  --neut4-raisin_black: #292327;
+  --neut5-rich_black_FOGRA39: #0c0c0c;
+}
+
+/*================================== Core Styles ===================================*/
+html {
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  line-height: 1.125;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--neut5-rich_black_FOGRA39);
+  background-repeat: no-repeat;
+}
+
+/**This will give you the same result, and make it easier to change the box-sizing in plugins or other components that leverage other behavior. source: CSS TRICKS*
+
+/*================================== Core Styles ===================================*/
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+aside {
+  max-width: 40vw;
+  width: 37%;
+  padding: 30px;
+  background-color: var(--neut4-raisin_black);
+  color: var(--neut1-cultured);
+  text-align: center;
+}
+
+main {
+  max-width: 60vw;
+  width: 60%;
+  padding: 30px;
+  background-color: var(--dark1-blue_black_blue);
+}
+
+
+
+form {
+  color: var(--neut2-white);
+}
+
+input {
+  display: inline-flex;
+  box-sizing: border-box;
+  background-color: var(--neut4-raisin_black);
+  border: 1px solid var(--bright1-blazing_yellow);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: var(--neut1-cultured);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--sec3-terracota);
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 900;
+  padding: 0.75em 2em;
+  border: none;
+}
+
+.generic_btn {
+  background-color: var(--neut2-white);
+  color: var(--neut5-rich_black_FOGRA39);
+}
+
+.green_btn {
+  background: var(--dark2-dark_jungle_green);
+  border: 1px solid var(--bright1-blazing_yellow);
+  color: var(--neut2-white);
+}
+
+.blue_btn {
+  background-color: var(--bright3-vivid_blue);
+  color: var(--neut2-white);
+}
+
+.yellow_btn {
+  background-color: var(--bright1-blazing_yellow);
+  color: var(--neut5-rich_black_FOGRA39);
+}
+
+.red_btn {
+  background-color: var(--bright2-bright_Red);
+  color: var(--neut2-white);
+}
+
+.btn:hover,
+.btn:focus {
+  opacity: 0.75;
+  outline: none;
+}
