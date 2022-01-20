@@ -8,12 +8,10 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
-router.get('/', (req, res) => {
-  res.send('Get the sign in page');
-});
 
 router.post('/process_login', (req, res, next) => {
   //   req.body comes from urlencoded which parses the http messages for sent data
+  const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
   if (password === 'pa33') {
@@ -34,8 +32,19 @@ router.get('/welcome', (req, res, next) => {
   next();
 });
 
-router.post('/process_register', (req, res) => {
-  res.send("Can we get an AMEN?!");
+router.post('/process_register', (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const email = req.body.email;
+  if (password === 'pa33') {
+    res.cookie('email', email);
+    res.redirect('/welcome');
+  } else {
+    res.redirect('/signup?msg=username and password already in use.');
+  }
+  //res.json(req.body);
+  //res.send("Can we get an AMEN?!");
+  next();
 });
 
 router.get('/', (req, res, next) => {
