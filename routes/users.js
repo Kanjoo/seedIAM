@@ -15,21 +15,21 @@ router.get('/', (req, res) => {
 router.post('/process_login', (req, res, next) => {
   //   req.body comes from urlencoded which parses the http messages for sent data
   const password = req.body.password;
-  const username = req.body.username;
+  const email = req.body.email;
   if (password === 'pa33') {
-    res.cookie('username', username);
+    res.cookie('email', email);
     res.redirect('/welcome');
   } else {
     res.redirect('/login?msg=fail');
   }
-
+  // console.log(email);
   //res.json(req.body);
   next();
 });
 
 router.get('/welcome', (req, res, next) => {
   res.render('welcome', {
-    username: req.cookies.username
+    email: req.cookies.email
   });
   next();
 });
@@ -38,6 +38,10 @@ router.post('/process_register', (req, res) => {
   res.send("Can we get an AMEN?!");
 });
 
-
+router.get('/', (req, res, next) => {
+  res.clearCookie('email');
+  res.redirect('/');
+  next();
+});
 
 module.exports = router;
