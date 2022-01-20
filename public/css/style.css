@@ -1,0 +1,107 @@
+/*================================== Custom Properties ===================================*/
+
+:root {
+  --prime1-moss_green: #859b6f;
+  --prime2-terra_pink: #ffb3b3;
+  --prime3-shadow_blue: #7480a4;
+  --bright1-blazing_yellow: #fee715;
+  --bright2-bright_Red: #e10600;
+  --bright3-vivid_blue: #2657ff;
+  --dark1-blue_black_blue: #101820;
+  --dark2-dark_jungle_green: #151f21;
+  --sec1-forest_green: #002f06;
+  --sec2-earth_red: #660000;
+  --sec3-terracota_mud: #ac3931;
+  --neut1-cultured: #f6f8f7;
+  --neut2-white: #ffffff;
+  --neut3-rocket_metallic: #7d777b;
+  --neut4-raisin_black: #292327;
+  --neut5-rich_black_FOGRA39: #0c0c0c;
+}
+
+/*================================== Core Styles ===================================*/
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;  
+  left: 0;
+  right: 0;
+}
+
+/**This will give you the same result, and make it easier to change the box-sizing in plugins or other components that leverage other behavior. source: CSS TRICKS*/
+
+header {
+  background-color: var(--prime2-terra_pink);
+  text-align: center;
+  width: 100%;
+}
+
+
+article{
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+article a {
+  color: var(--neut2-white);
+  text-decoration: none;
+}
+
+aside{
+  text-align: center;
+  margin: 5px;
+  padding: 30px;
+}
+aside a {
+  color: var(--dark1-blue_black_blue);
+  text-decoration: none;
+}
+.oi-copyright {
+  text-align: center;
+  padding: 0.02rem;
+  background-color: var(--neut1-cultured);
+  font-family: "Poiret One", cursive;
+  font-weight: 600;
+}
+#stamp {
+  vertical-align: bottom;
+}
+footer { 
+  position: relative;  
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: var(--neut1-cultured);
+  font-family: "Poiret One", cursive;
+  font-weight: 300;  
+}
+
+@media (orientation: landscape) {
+  body {
+    background-color: var(--prime3-shadow_blue);
+  }
+
+}
+
+@media screen and (max-width: 480px) and (min-width: 320px),
+  (min-width: 1080px) {
+  body {
+    background: var(--sec3-terracota_mud);
+  }
+}
+
+@media screen and (max-width: 480px) and (min-width: 320px) {
+  body{
+    background-color: var(--prime1-moss_green);
+  }
+}

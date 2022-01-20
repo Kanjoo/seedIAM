@@ -4,27 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/form.css">
+  <link rel="stylesheet" href="css/forms.css">
   <title>SignUp/SignIn</title>
 </head>
 
 <body>
   <div class="container">
-    <aside>
-      <h2>Multi-visionaires` Huddle</h2>
-      <img class="hero_img" src="icons/OI.png" alt="Logo" width="125" height="150">
-      <p>Ideas In Execution</p>
-    </aside>
     <main>
-      <form action="#" method="POST" class="SignUpForm" name="SignUpForm">
-        <h2>Sign Up</h2>
+      <form action="process_login" method="post" class="LoginForm" name="LoginForm">
+        <h2>Welcome back to the Huddle!</h2>
         <div>
-          <div class="form_input">
-            <label for="name"></label>
-            <input type="text" class="input_field" id="username" name="username" placeholder="Username" required>
-          </div><br>
-
-          <div class="form_input">
+         <div class="form_input">
             <label for="email"></label>
             <input type="email" class="input_field" id="email" name="email" placeholder="Email" required>
           </div><br>
@@ -34,8 +24,9 @@
             <input type="password" class="input_field" id="password" name="password" placeholder="Password" required>
           </div><br>
           <div>
-            <button class="btn green_btn" type="submit">Sign Up</button>
+            <button class="btn green_btn" type="submit">Login</button>
           </div><br>
+          <p class="msg">Not registred?<a href="signup.html">Create an account</a></p>
       </form>
     </main>
   </div>

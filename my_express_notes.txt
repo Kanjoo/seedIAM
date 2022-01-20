@@ -1,0 +1,815 @@
+
+Udemy 
+Just Express (with a bunch of node and http) - Robert Bunch
+
+Transcript
+
+We've made some good progress, and now that you have the ability to actually render from a template,
+
+I want to make good use of it instead of doing the silly ones and revisit the request and the response object before we get to the router, we're going to make this which I've set up using using SJS and
+
+we'll have a couple renders and we'll hop around a little bit.
+
+The way that it will work is you put a user name and doesn't make any difference what you put in there to be used on a different page.
+
+And then if you put in I have the password said, if you put in the letter X and click log in, it will bring you to a welcome route, which will kick up a little a little note.
+
+And if you click logout, it'll bring you back to the to the login page.
+
+And there's a couple of things going on behind the scenes that you don't know about.
+
+So come over to our code base.
+
+I have created a new folder called Express 301 Now, and I have a new file called Log In Site that JS
+
+I have it set up the way that we left pretty much the rendering apps.
+
+We've got path at the top.
+
+We bring in Express, we invoke Express and we we put that inside of app.
+
+We bring in helmet and we add that is middleware, we use public as our as our static folder using the express static middleware, we bring in JSON and you are all encoded from the express object and add those as middleware this way that any data that comes in will be added to that body.
+
+We set the view ingen SJS, we set the location of the views to views.
+
+And then I have a single root here that's just right now sending a sanity check.
+
+And then the app is listening on on PORT 3000.
+
+OK, now, because I've started completely over if I run node mine, log in site here.
+
+It is going to really break because we're missing a whole bunch of stuff, the first thing we're missing
+
+is express.
+
+Well, I do not have a package DODGSON'S.
+
+So just as a reminder, if you're in a new folder as well, you need to run NPM inIt.
+
+And like always, I'm just going to hit enter until we get to the end because the defaults are fine
+
+for this project and then we'll need to npm install a bunch of stuff, we'll need to npm install, express, dash dash save that will get us express, we'll need to npm install SJS Dasht Save and we'll need to
+
+npm install helmet dash dash save.
+
+I think those are the only three cantrip modules we're using.
+
+All right.
+
+We should be all set now to run node mine again and hopefully it doesn't break and we go.
+
+Looks like we're in good shape.
+
+Let's come back over and refresh and change the path to sanity check.
+
+It looks like it's coming through OK, at least it is for me.
+
+So get that up and running positive, you need to.
+
+I've got in the GitHub repository a folder called Log In Starter Files, and that's the projector, that's the little section we're doing here now is log in starter files.
+
+These are just HTML files.
+
+I totally get it.
+
+If you're frustrated and you don't want to download starter files, because that's always me when I'm
+
+when I'm learning something and someone says, go download this GitHub project and I'm thinking, no,
+
+I want to build it from scratch or I won't understand it, that that's not what this is.
+
+This is just HTML access so that you don't have to take the time to set it up yourself.
+
+You, of course can.
+
+So if you go to a ridiculous Dash Inc is my username on GitHub, you go to my account and click on repositories, you can search for it in case it's not at the top anymore.
+
+And the the repository name is Just Express.
+
+And if you go into Express 301, you will find the in starter files folder.
+
+And inside there, there is a log in and you can clone the entire project and you probably already done that, but if you haven't, you can copy it from here.
+
+Usually what I do is click on Raw and I copy it like that.
+
+But either way, this is the starting Egis code, you can make the form anywhere you want.
+
+This is not important, but it's not a front in class. So we're not going to spend time putting this together.
+
+All right.
+
+So I'm going to make a new file.
+
+I'm going to paste that in.
+
+I'm going to file save as.
+
+All right.
+
+I made a new folder called Views and I put login.ejs inside of that folder and that is what I just copied.
+
+All right.
+
+When we come back over here and I'm going to grab Stiles next, and this one's long enough, I'm definitely going to hit raw copy and this is all the case for our page.
+
+So come back over here.
+
+I'm going to make another new file, and this one is going to need to go inside of public.
+
+So you'll need to create public.
+
+And inside of your Aegeus file, you'll notice that I'm referencing it inside of stylesheets, so this is a convention we're going to start following.
+
+You will see why in a couple videos.
+
+So I'm going to save this.
+
+So I've got a new folder called Public inside of that, a folder called Stylesheets.
+
+And inside of that, I put Styles dot success, which is what this is referencing.
+
+Oh, I'm sorry.
+
+Looks like I have styled access.
+
+So you'll need to change one or the other, not styled access.
+
+This needs to be changed to styles or you need to change the name of the file to style.
+
+I'll go ahead and just change the name to style.
+
+There we go.
+
+So we got style access and over here we've got style since as well.
+
+All right, let's come back to our login site and we're going to add a new route, we're going to adapt,
+
+get we're going to put in here a new route of log in karma and we'll have our callback of rec rez and
+
+next.
+
+And we're going to resident render.
+
+In.
+
+So this will go fetch Log-in Ejaz, which we just made.
+
+And if all went well, it should look pretty nice because we have the cows and we have the TML already
+
+put together.
+
+I'm going to revisit Log-in.
+
+All right.
+
+It's unimportant what you put in here.
+
+I have random go to usernames.
+
+This one's Edna, so we should be we should be all wired up at this point where we've got a login page.
+
+So let's go take a look at our log index page now, you may or may not have experienced doing this,
+
+but online for we have our form tag.
+
+The action attribute determines where the form is going to be submitted, when it is submitted and an
+
+affront and framework, you would never submit the form because you don't want to leave the HTML page.
+
+But in our case, because we're using resort render expresses in charge of rendering every single page.
+
+So we are going to have express move the form once it's submitted onto this route.
+
+So the process log in and it is a post request.
+
+So we're going to make a post request to this route that should immediately set off a trigger in your head.
+
+We need to go back to our express server and log in site and we need to add process log in.
+
+So that's exactly what we'll do.
+
+We'll do apt post and we're going to handle process log in and we're going to do rec rez and next.
+
+And for now, we're just simply going to as a task, we're going to do Rez.
+
+Json, let's just put test in there just to make sure that our form is submitting takes a bit longer 
+this way.
+
+But again, if you can short circuit the number of possible errors that you've got down to as few as
+
+possible, that is always, always makes things easier.
+
+So back over here now, I'm going to refresh the page because we've got different HTML.
+
+I'm going to click on Log In.
+
+And it looks like it brought us to a process log in and we got test back.
+
+Now, if I hit enter here.
+
+We're going to get a 404 because the browser issue to get request when I hit enter in the euro bar.
+
+And we do not have a jet route for process log in.
+
+We do have a post route, which is what this is at.
+
+So the browser is at a post request here because of the form tag.
+
+OK.
+
+The data as it's being passed here from the form so back in log that Digest's, we've got to input boxes,
+
+we've got this one and we've got this one.
+
+We've got a text and a password.
+
+We've got a username and password for the placeholders.
+
+In HTML, whatever the name is said, as is what it's going to be passed as to whoever comes next and
+
+in this case, our route, our process log in route is going to get this variable as username and it's
+
+going to get this variable as name.
+
+So whatever the user put in here, it's going to come from here.
+
+And whatever the user put in here is going to come from here.
+
+It's going to get passed through the message.
+
+And this this form is going to come through as if you remember not.
+
+We did this a while back with Ajax.
+
+It's going to come through as you URL encoded.
+
+So this piece of middleware is going to pass that out for us and is going to put these variables, username
+
+and password inside of req.body.
+
+So this is going to be in charge of collecting that data for us.
+
+So it's come down here and let's get rid of test and let's just rest Dodgson record body.
+
+All right.
+
+Recht body is made by you earlier encoded.
+
+Which passes the HTP message for sent data.
+
+So if we go back over Recht body, we'll have a property of username and a property, a password, because
+
+that's how we're sending it over in our form.
+
+Our form is saying, hey, go to process, log in specifically, go to post process, log in and send
+
+this piece of data as username and send whatever's in here as password.
+
+You URL encoded when it gets here before it actually gets here, because this piece of middleware is
+
+abhinaya will already have passed the request object and will add to the request object abody property,
+
+which will have those two pieces of data in it.
+
+So we come back over and we refresh again and if I click login, it comes through with a username of
+
+Edna at Edna Dotcom, which is what I had in the first and PAYBOX and a password of E!
+
+What we want to actually accomplish here is we want to decide what to do with the user so you can have
+
+some kind of logic in here.
+
+OK, let's start off, though, by like making a little bit easier in itself, will do const and will
+
+set a password equal to wreck dot body dot password.
+
+And we'll have a constant called username and we'll set that equal direct body dot username so we can
+
+grab those out of our record body and then we can just make our code a little bit cleaner.
+
+Once we've done that, we're going to check the database to see if user credentials are valid.
+
+OK, maybe using B or some other version of Blowfish or you've got some other algorithm or OS or whatever
+
+it is, we're not going to do that here.
+
+But if they are valid, then what we're going to do is send them to the welcome page.
+
+But first we want to save their user name in a cookie.
+
+All right.
+
+The reason we want to do that is so that it's readily available.
+
+Now, you can also use sessions to do the same thing.
+
+Sessions and cookies are very similar.
+
+The difference is that a cookie data is stored entirely on the browser and the browser will send it
+
+up to the server.
+
+Every time a request is made, session data is stored on the server and the browser is given essentially
+
+a key for that data.
+
+But Sessions is not included with Express.
+
+You can go fetch express sessions, but cookies are.
+
+So we'll we'll use cookies here instead.
+
+You could also use local data that would be totally fine.
+
+This is again, this is built into express, which is why we're going to use it.
+
+So we'll check and we'll say if password equals, equals, equals and I'm just going to put in here
+
+X, it doesn't make any difference what you put.
+
+If the password equals X, then we are going to call the red dot cookie method.
+
+And this is a new one.
+
+OK, red dot cookie takes at least two args.
+
+It can take more.
+
+There's lots of there's lots of options.
+
+One, it takes the name of the cookie or sort of like the name of the variable essentially and to the
+
+value to set it to go.
+
+And again, every time that this browser, whoever the response is sent to, every time they make a
+
+request, they're going to send their cookie up so the server will have all of that that data available
+
+to it.
+
+So we're going to put in here inside of our cookie.
+
+We're going to call this user name and we're going to set it equal to user.
+
+So we'll have a cookie called user name and it's going to equal username, which is coming from record
+
+body dot username.
+
+Which is coming from the request object.
+
+Which was upended by uncoded, which passed the data that came from the form that the user submitted
+
+right here.
+
+So this got sent you all encoded, added to that body.
+
+By the time we got down here, it was accessible and record body.
+
+And now we're going to we're going to stash that in a cookie so that going forward, we can access it
+
+on any page.
+
+And we don't need to remember it, because if the user comes back and in just a second, you'll see
+
+why the user comes back, we won't have access to that body anymore.
+
+We set them we send them to a new path.
+
+We get a totally new response and a totally new request.
+
+Remember, that's part of HTP.
+
+It's it's stateless.
+
+There's no conversation or dialogue going on.
+
+It's just a one off.
+
+You get a request and response and then we start completely over.
+
+So that's what the cookie is for.
+
+All right.
+
+And then we're going to call resort redirect.
+
+And this is another new one.
+
+OK, and Reza, redirect does exactly what you think it would do.
+
+It takes one ARG where to send the browser.
+
+So we're going to put in here welcome.
+
+Which means the user is going to going to get their their cookie set and then they're going to get forwarded
+
+on to welcome.
+
+That means that we need a welcome page.
+
+So let's get rid of this, this resident, Jason.
+
+Well, let's come down here before we forget and we'll do an apt get the welcome, you know, the drill,
+
+it's Rick Rez and next and then in here for now, we'll just do residents and we'll put in here just
+
+welcome.
+
+That's plenty for for the moment.
+
+OK, let's go test this out just to make sure that we we get forded and everything looks like it works.
+
+The only thing that we're OK to test is, is the letter X, because that's what our servers expecting.
+
+So unless you change that, make sure to put an X in here for the password and login.
+
+And there we go, it brought us to welcome and we got her we got our resident scent.
+
+So these are two new methods here.
+
+Resident Cookie and resident redirect.
+
+The response object can set cookies.
+
+And the redirect method can can move the user on essentially programmatically, rather than clicking
+
+on something or typing it into the Eurail, we can actually move them around internal to express.
+
+So let's handle our P&L statement.
+
+So if they didn't put in the right term, then we're going to do a different result redirect in this
+
+time, we'll send them right back to the login page.
+
+We're going to put in here a little query string.
+
+Going to be putting her MSgt equals they'll OK.
+
+Well, we'll maybe deal with that here in a little bit.
+
+So our process log in is a post route, and I don't know if this makes sense to you or not, but the
+
+users never going to see this page.
+
+The browser never will see this page.
+
+The user will come here as soon as they submit the form, they'll end up a process log in.
+
+But there is no resident render, resident send or resident Jason here.
+
+There are only resident redirects, which means we'll hit this route just long enough to check to see
+
+if the password is X or not, and then we'll redirect him to either welcome or will redirect them to
+
+log in.
+
+There's no other option for this particular route.
+
+This post route is its only purpose is for the user to submit data.
+
+Remember, that's what a post route is for means.
+
+We want to submit some data.
+
+We are accepting their data and then we're going to send them on to where they actually belong.
+
+OK, so let's go over to our login page and I'm just going to save log in here as welcome news and I'm
+
+going to remove the form tag because we don't need the form tag anymore.
+
+So this is what my welcome looks like now.
+
+It's exactly the same thing is log in was.
+
+But without the form and I'm going to put in here in H1 and the H1 is going to say welcome comma, we'll
+
+put in your capital username, we'll say back to the site.
+
+So this is going to be a just basically a stock page just to see if our stuff works.
+
+And we're going to fill out a username here in a little bit.
+
+But we've got a we've got a view to render now.
+
+Welcome to James.
+
+It's going to look just like our other one, we've got an H1 that's the only thing that's going to be
+
+on their.
+
+We do need to leave this debate so that it looks correct.
+
+We'll go back to log in site.
+
+And instead of residents and welcome, we're going to do a resident render.
+
+Welcome, so that'll go out and fetch Welcome Digest's, so give it another try.
+
+I'm going to change the password here to X and I'm going to log in.
+
+And there we go, it brings us to our welcome route, it's a get request because it's a redirect we're
+
+just redirecting them to welcome.
+
+They ended up at yet we read rendered welcome, which is welcome news and it prints off.
+
+This page here.
+
+Well, instead of username here, we wanted to actually put their username in.
+
+Where did we store that?
+
+Well, we stored it inside of the process log in route, we put it inside of the cookie, so that's
+
+where the username is.
+
+We don't have any other way to access it, because if we try and send over Recht body, dot username
+
+it, it'll be empty.
+
+There won't be anything in there.
+
+In fact, let's go ahead and try that.
+
+So we'll send over your username and we'll put Recht body dot username.
+
+So this is in our resident render, we're going to the welcome Jesse file and then this is the data,
+
+right?
+
+Locals dot user name will now equal record body dot username.
+
+Go back over to welcome dogs and will change username here, I'm going to go waxen equals username wax
+
+off.
+
+So this will cause Ejaz to evaluate the statement and put it in the DOM.
+
+So if I refresh now.
+
+We get nothing because it's undefined, there's there's nothing there.
+
+We can start the whole process over just to make sure, but that is, in fact, doing the right doing
+
+the right thing.
+
+Well, the issues, because, again, we put it inside of the cookie back up here rather than it's not
+
+it's not being sent through the body anymore.
+
+That happened on the first request.
+
+This is a totally new request.
+
+Now, a new TDB request has been made.
+
+We have a new request object and a new response object to work with.
+
+So instead of sending record body username, we've got another new thing to put in here, it's going
+
+to be rec, dot cookies, dot username.
+
+So the rec cookies object will have a property.
+
+For every named cookie that has been set.
+
+All right, the reason that we'll have a cookies, that username is because we set it as username appear.
+
+And note here that when you call resident Cookie, it's singular.
+
+That's because you can only set one cookie at a time down here.
+
+Rechter Cookies is plural because you presumably have multiple cookies.
+
+Now, before we do this, we actually are going to have to go and fetch the cookie parser because that
+
+is not part of the body.
+
+The cookies are sent through the message the same way that the data is from the form.
+
+But we need something else because you are all encoded and Jason will not be able to do those.
+
+So we're going to do an app use.
+
+We'll put in here cookie parser, open, close, and then hopefully you guessed it up above here, right.
+
+We're down below.
+
+It's going to say there's you know, there's no module with that name.
+
+So we're going to come up above right up here and we're going to do a const cookie parser equals require
+
+cookie Dasch parser.
+
+And we'll need to save that, of course, it's going to complain because that model is not found.
+
+This is a third party model, even though and again, I'm not a real big fan of cookies for lots of
+
+reasons, but this is just part of of what's built into the request and the response object.
+
+And it is something that lots and lots of websites use.
+
+So let's go and fetch it.
+
+Let's close down our server and let's do an NPM, install the NPM, install cookie Dasch parser, dash,
+
+dash, save, and they'll go out and grab the cookie parser and we should be able to run our server
+
+against a node mitigants log in site.
+
+And I spell this Kucher parser and we go fix that typo and we should be good to go.
+
+So the pieces here we need to require kookie parser line six.
+
+We need to add that as middleware because we don't know how or why, and we could go look inside the
+
+cookie parser node module if we wanted to, and they would be doing things with the rack in the red
+
+object because it's middleware.
+
+And so down here, when we actually try and set it against the response object, this will kick into
+
+gear and we when we actually try and fetch it, there actually will be a wreck cookies now as a result
+
+of the cookie parser module.
+
+OK, with all that work now, let's go back over to the browser.
+
+Let's give it a try and click X and there we go.
+
+So says Welcome Edna at Edna Dotcom back to the site.
+
+So this right here, Edna Edna Dotcom, come back over to the code base inside.
+
+Welcome, James.
+
+We're printing off username.
+
+That's what Ed needed is in username is coming from.
+
+Our express at.
+
+It's right here.
+
+And it's the value of Recht cookies, that username or the value of the cookies, that username.
+
+It's coming from right here, we set Reza Kookie, we set the username kookie to the value of username
+
+will the username right here is coming from record, bodyboard username?
+
+Well, the value of record bottega username must be coming from data that's coming into the root because
+
+that's what the wreck that that's what wrecked our body is its past body data.
+
+And that's coming from our form on the login page.
+
+Well, the last thing I want to do is come back over to welcomed at SJS and we're going to throw underneath
+
+our H1 here, I'm going to put just a P tag and will make an anchor tag.
+
+And that anchor tag is going to link to logout and we'll link this to slash logout.
+
+OK, so this is going underneath our welcome.
+
+Hey, welcome back to the site.
+
+You could put this up in the nav bar somewhere else if you wanted to in a real site.
+
+But we'll just put it right here and we're just going to link directly to logout.
+
+So back over here, we need to make a route for logout because there's going to be a what do you mean
+
+what type of route?
+
+An anchor tag always points to a get route.
+
+It'll always be a get route.
+
+So we're going to come back over here and we're going to do an app again and we're going to go to Slash
+
+Logout.
+
+And it'll be the usual Rick Reson next.
+
+An inside here.
+
+We're going to do one more new one.
+
+We're going to do resident clear cookie.
+
+OK, and Rezac, clear cookie takes one AAG.
+
+The cookie to clear by name, I'll put that in parentheses, so just like up above, when we wanted
+
+to grab the cookie by name right here, cookies, that username right here, we're going to hand reclear
+
+cookie username.
+
+And the last thing then is just to simply do a resident redirect and we will send the user back to the
+
+login page.
+
+So clear Cookie will will remove the cookie from their computer.
+
+Which cookie?
+
+Specifically the username cookie.
+
+This is good practice once the date is no longer needed to get it out of their system.
+
+So you're not clogging it up.
+
+And so that sensitive data isn't isn't available later on.
+
+So to refresh and we get the log out here and if I click on log out, it removes removes them from our
+
+page.
+
+Now, if you ever want to see what cookie data is is currently in your browser, just even as a developer
+
+is very helpful as a user.
+
+It's it's awful nice to know, too.
+
+You can click on the application tab here and and over on the left hand side, this is where the various
+
+storages are at.
+
+So there's local storage there, session storage.
+
+And if you click on cookies, it will show you this domain because cookies are generally domain specific.
+
+And if I click on login here, you'll see down at the bottom that username has popped up and it'll show
+
+you what the value is.
+
+It's Edna.
+
+And then it has it is encoded the at symbol, but it has put it in here and it doesn't have an expiration
+
+date.
+
+It has the size and the path and everything, everything that's in here.
+
+If I click log out, you can actually watch it disappear.
+
+So it's kind of fun if you hop from page to page to see what cookie data is in your your browser because
+
+they will store it in this spot.
+
+This is where the browser is going to store it.
+
+But that's the way to make sure that clear cookies is working.
+
+OK, so log in one more time and I can refresh over and over and over this welcome page.
+
+That cookie is still there.
+
+Even if I leave, go back to the login page and then back to the this bogus page, I guess, and then
+
+go to welcome that is still there because that cookie is still set.
+
+And that is what we are pulling from right here is rect cookies, that username.
+
+Not until I clear it out, and then if I go back to the welcome route, will it actually be empty?
+
+OK, so we've gone full circle.
+
+We brought the user in on the login page.
+
+They entered some data.
+
+We we grabbed the data out of the body and passed it with you all encoder.
+
+We checked to see if their password was good or bad.
+
+If it was good, then we set a cookie we forged them on to welcome.
+
+So this this route was purely a middleman.
+
+Its only job was to process some data, like check the database, whatever else.
+
+And at Wellcome we render the welcome page and we send it over that cookie so that we can display it.
+
+If they ever want to log out, we will clear that cookie and we will send them back to the login page.
+
+Okay, great job.
+
+27. Getting data from the request object - forms and cookies
+29min
+28. Getting data from the query string
+13min
+29. Getting data from params (URL wildcards) - req.params and req.param()
+17min
+30. Sending files, and headers already sent!
+15min
+31. The Router
+18min
+32. The Express Generator
+14min
+33. STOP - Checklist Update and Short Review
+5min
+
+    34. Don't fear the HTTP headers!!
+    29min
+
