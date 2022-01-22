@@ -2,7 +2,7 @@
   "name": "iam",
   "version": "1.0.0",
   "description": "indentity access management project",
-   "scripts": {
+  "scripts": {
     "test": "node ./bin/www"
   },
   "repository": {
@@ -23,6 +23,8 @@
     "helmet": "^5.0.1",
     "http-errors": "^2.0.0",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1",
     "request": "^2.88.2"
   }
 }
