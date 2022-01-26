@@ -4,12 +4,12 @@ CREATE TABLE users(
     fullname VARCHAR(25) UNIQUE NOT NULL,
     email_address VARCHAR(50) UNIQUE,
     mobile_number TEXT UNIQUE NOT NULL 
-    CONSTRAINT phone_number CHECK(VALUE ~ '^(\+\d{1,3}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{3,4}$'),
+    CONSTRAINT phone_number CHECK(mobile_number ~ '^(\+\d{1,3}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{3,4}$'),
     created_on TIMESTAMPTZ,
     last_login TIMESTAMPTZ
 );
-CREATE UNIQUE INDEX find_users_by_name ON users (LOWER(username));
-CREATE INDEX find_users_by_partial_name ON users (username VARCHAR_PATTERN_OPS);
+CREATE UNIQUE INDEX find_users_by_name ON users (LOWER(fullname));
+CREATE INDEX find_users_by_partial_name ON users (fullname VARCHAR_PATTERN_OPS);
 CREATE INDEX users_last_login ON users (last_login);
 
 
@@ -59,3 +59,17 @@ CREATE INDEX users_last_login ON users (last_login);
 -- (?: *x(\d+))?       #Group 5: The Extension number. Optional.
 -- \s*$                #Match any ending whitespaces if any and the end of string.
 -- See this YOUTUBE Video: https://www.google.com/search?newwindow=1&rlz=1C1CHBF_en-GBGB964GB964&lei=X_brYb31OeiFhbIPnrWomAw&q=10%20digit%20phone%20number%20regex&ved=2ahUKEwj9oIaBrMX1AhXoQkEAHZ4aCsMQsKwBKAB6BAhCEAE&biw=1920&bih=937&dpr=1#kpvalbx=_rvfrYdyYHIuegQanspG4Aw19
+
+
+-- Seeding the database
+
+INSERT INTO users (name, email, mobile_no, password) VALUES ('Khoero Eixas', 'ke@eixas.com', '+243 654 928 7310');
+
+ALTER TABLE users ADD COLUMN password VARCHAR(25);
+
+UPDATE users SET password ='mitur38x@$' WHERE fullname = 'Khoero Eixas';
+
+
+ALTER TABLE users RENAME COLUMN mobile_number TO mobile_no;
+
+DELETE FROM users WHERE id = 1;
